@@ -1,43 +1,24 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
-import { selectContactsError, selectContactsisLoading } from 'redux/selectors';
-
-import { ContactsList } from './ContactsList/ContactsList';
-import ContactForm from './ContactForm/ContactForm';
-import { SearchFilter } from './SearchFilter/SearchFilter';
-
-import { Container } from './App.styled';
+//
+import { Routes, Route } from 'react-router-dom';
+import { SharedLayout } from './SharedLayout/SharedLayout';
+//
+import { Home } from 'pages/Home';
+import { Login } from 'pages/Login';
+import { Registration } from 'pages/Registration';
+import { Contacts } from 'pages/Contacts';
+import { NotFound } from 'pages/NotFound';
 
 export const App = () => {
-  const dispatch = useDispatch();
-  // Получаем части состояния
-  // const { items, isLoading, error } = useSelector(getContacts);
-  // const { items, isLoading, error } = useSelector(getContacts);
-  // const { isLoading, error } = useSelector(selectContacts);
-  const isLoading = useSelector(selectContactsisLoading);
-  const error = useSelector(selectContactsError);
-
-  // console.log(items);
-  // console.log(isLoading);
-  // console.log(error);
-
-  // Вызываем операцию
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   return (
-    <Container>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-
-      <SearchFilter />
-      <ContactsList />
-      {isLoading && <p>Loading contacts...</p>}
-      {error && <p>Fetching error, server says: {error}</p>}
-    </Container>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="contacts" element={<Contacts />} />
+        <Route path="login" element={<Login />} />
+        <Route path="registration" element={<Registration />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 };
 
