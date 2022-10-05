@@ -48,6 +48,18 @@ export const removeContact = createAsyncThunk(
   }
 );
 
+export const patchContact = createAsyncThunk(
+  'contacts/removeContact',
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.patch(`/contacts/${id}`);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
 //////////////////        USERS       //////////////////
 
 const setAuthHeader = token => {
@@ -98,11 +110,17 @@ export const userLogout = createAsyncThunk(
   }
 );
 
-export const userCurrent = createAsyncThunk(
-  'auth/userCurrent',
-  async (user, thunkAPI) => {
+export const userRefresh = createAsyncThunk(
+  'auth/userRefresh',
+  async (_, thunkAPI) => {
+    // const state = thunkAPI.getState();
+    const { token } = thunkAPI.getState().auth;
+    if (!token) return thunkAPI.rejectWithValue(' No valid token ');
+
+    setAuthHeader(token);
     try {
-      const response = await axios.get('/users/current', user);
+      //
+      const response = await axios.get('/users/current');
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

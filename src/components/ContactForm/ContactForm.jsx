@@ -52,7 +52,8 @@ const ContactForm = () => {
 
     // dispatch(addTask(event.target.elements.text.value));
     // dispatch(addContact({ id: name, name, number }));
-    dispatch(addContact({ name, phone: number }));
+    dispatch(addContact({ name, number }));
+    // dispatch(addContact({ name, phone: number }));
   };
 
   const handleChange = event => {
