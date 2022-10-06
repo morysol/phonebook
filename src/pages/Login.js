@@ -6,13 +6,8 @@ export const Login = () => {
   const handleOnSubmit = e => {
     e.preventDefault();
     //
-    const email = e.target.form.elements.email.value.toString();
-    const password = e.target.form.elements.password.value.toString();
-    // const { name, password } = e.target.form.elements;
-    // const { name, password } = e.target.form.elements;
-    // dispatch(userSignup({ name, email, password }));
-    // console.log({ name, email, password });
-    // console.log(JSON.stringify({ name, email, password }));
+    const email = e.target.form.elements.email.value;
+    const password = e.target.form.elements.password.value;
 
     dispatch(userLogin({ email, password }));
   };

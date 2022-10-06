@@ -44,7 +44,9 @@ const contactsSlice = createSlice({
     [removeContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      const index = state.items.findIndex(task => task.id === action.payload);
+      const index = state.items.findIndex(
+        contact => contact.id === action.payload
+      );
       state.items.splice(index, 1);
     },
     [removeContact.rejected](state, action) {

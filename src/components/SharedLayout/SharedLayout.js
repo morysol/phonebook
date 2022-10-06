@@ -39,14 +39,7 @@ export const SharedLayout = () => {
               <NavLink to="/registration">registration</NavLink>
             </>
           )}
-
-          {/* <NavLink to="/contacts">Contacts</NavLink> */}
-          {/* <NavLink to="/login">login</NavLink> */}
-          {/* <NavLink to="/registration">registration</NavLink> */}
         </nav>
-
-        {/* <Navigation /> */}
-        {/* {isLoggedIn ? <UserMenu /> : <AuthNav />} */}
       </header>
       <Outlet />
     </Container>
