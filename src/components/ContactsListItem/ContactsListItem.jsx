@@ -16,7 +16,7 @@ export const ContactsListItem = ({ id, name, number }) => {
           dispatch(handleDelete);
         }}
       >
-        delete {id}
+        delete
       </BtnDelete>
     </li>
   );
