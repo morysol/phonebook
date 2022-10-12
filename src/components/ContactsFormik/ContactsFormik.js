@@ -51,7 +51,7 @@ export const ContactsFormik = () => {
   });
 
   return (
-    <Flex bg="gray.100" align="center" justify="center">
+    <Flex bg="gray.100" align="center" justify="center" marginBottom={5}>
       <Box bg="green.50" p={6} rounded="md">
         <form onSubmit={formik.handleSubmit}>
           <VStack spacing={4} align="flex-start">

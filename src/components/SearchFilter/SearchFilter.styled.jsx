@@ -6,6 +6,7 @@ export const SearchBox = styled.div`
   row-gap: 20px;
   flex-direction: column;
   padding: 10px;
+  margin-bottom: 32px;
 `;
 
 export const Filter = styled.input`

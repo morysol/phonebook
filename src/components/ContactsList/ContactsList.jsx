@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 //
 import { selectContactsItems, selectFilter } from 'redux/selectors';
-import { ContactsListItem } from '../ContactsListItem/ContactsListItem';
+// import { ContactsListItem } from '../ContactsListItem/ContactsListItem';
 import { ContactsListItemStyled } from '../ContactsListItemStyled/ContactsListItemStyled';
 
 import {
@@ -21,7 +21,7 @@ export const ContactsList = () => {
   if (contacts.length > 0) {
     return (
       <>
-        <ul>
+        {/* <ul>
           {contacts
             .filter(contact =>
               contact.name.toLowerCase().includes(filter.toLowerCase())
@@ -34,7 +34,7 @@ export const ContactsList = () => {
                 number={contact.number}
               />
             ))}
-        </ul>
+        </ul> */}
         <List spacing={3}>
           {contacts
             .filter(contact =>
