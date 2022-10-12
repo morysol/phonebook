@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from 'redux/operations';
 import { selectContactsError, selectContactsisLoading } from 'redux/selectors';
 import { ContactsList } from '../components/ContactsList/ContactsList';
-import ContactForm from '../components/ContactForm/ContactForm';
+// import ContactForm from '../components/ContactForm/ContactForm';
+import { ContactsFormik } from 'components/ContactsFormik/ContactsFormik';
 import { SearchFilter } from '../components/SearchFilter/SearchFilter';
 export const Contacts = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,8 @@ export const Contacts = () => {
   return (
     <>
       <h1>Phonebook</h1>
-      <ContactForm />
+      {/* <ContactForm /> */}
+      <ContactsFormik />
       <h2>Contacts</h2>
 
       <SearchFilter />
