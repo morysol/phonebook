@@ -4,6 +4,8 @@ import { Outlet } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userLogout } from 'redux/operations';
 //
+import { Divider, Text } from '@chakra-ui/react';
+//
 import { Container } from '../App.styled';
 import { useAuth } from 'hooks/useAuth';
 
@@ -18,9 +20,10 @@ export const SharedLayout = () => {
     //
     <Container>
       <header style={{ width: '75%', margin: '50px auto' }}>
-        <p style={{ textAlign: 'right', marginBottom: '32px' }}>
+        <Text mb={7} style={{ textAlign: 'right' }}>
           Welcome, {user.name ? user.name : ' anonymous!'}
-        </p>
+        </Text>
+        <Divider orientation="horizontal" />
         <nav style={{ display: 'flex', justifyContent: 'space-between' }}>
           <NavLink to="/">Home</NavLink>
 

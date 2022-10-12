@@ -5,20 +5,15 @@ import {
   //   List,
   ListItem,
   ListIcon,
-  // OrderedList,
-  // UnorderedList,
   Button,
   ButtonGroup,
   Flex,
   Spacer,
-  //   Center,
-  //   Stack,
 } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 
-//
-// import { BtnDelete } from './ContactsListItem.styled';
-// TODO fix delete id
+import { EditContact } from '../ModalEdit/ModalEdit';
+
 export const ContactsListItemStyled = ({ id, name, number }) => {
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(removeContact(id));
@@ -29,9 +24,10 @@ export const ContactsListItemStyled = ({ id, name, number }) => {
         {name}: {number}
         <Spacer />
         <ButtonGroup spacing={4} direction="row" align="center">
-          <Button colorScheme="teal" size="md">
+          {/* <Button colorScheme="teal" size="md">
             Edit
-          </Button>
+          </Button> */}
+          <EditContact contact={{ id, name, number }} />
           <Button
             colorScheme="orange"
             size="md"

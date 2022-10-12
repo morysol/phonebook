@@ -17,49 +17,67 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 
-export function EditContact() {
+import { useDispatch } from 'react-redux';
+
+import { patchContact } from 'redux/operations';
+
+export const EditContact = ({ contact }) => {
+  // const contacts = useSelector(state => state.contacts.items);
+  const dispatch = useDispatch();
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const initialRef = React.useRef(null);
-  const finalRef = React.useRef(null);
+  const onSave = e => {
+    e.preventDefault();
+
+    // console.log(e.target.elements.name.value);
+    // console.log(e.target.elements.number.value);
+    // console.log(id);
+    const name = e.target.elements.name.value;
+    const number = e.target.elements.number.value;
+    console.log(contact.id, name, number);
+    // alert(contact.id, name, number);
+    dispatch(patchContact({ id: contact.id, name, number }));
+    // e.target.elements.name.value = '';
+    // e.target.elements.number.value = '';
+    e.target.reset();
+    onClose();
+  };
 
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
-      <Button ml={4} ref={finalRef}>
-        I'll receive focus on close
+      <Button colorScheme="teal" size="md" onClick={onOpen}>
+        Edit
       </Button>
 
-      <Modal
-        initialFocusRef={initialRef}
-        finalFocusRef={finalRef}
-        isOpen={isOpen}
-        onClose={onClose}
-      >
+      <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Edit contact</ModalHeader>
           <ModalCloseButton />
-          <ModalBody pb={6}>
-            <FormControl>
-              <FormLabel>name</FormLabel>
-              <Input ref={initialRef} placeholder="name" />
-            </FormControl>
+          <form onSubmit={onSave}>
+            <ModalBody pb={6}>
+              <FormControl>
+                <FormLabel>name</FormLabel>
+                <Input name="name" type="text" placeholder="name" />
+              </FormControl>
 
-            <FormControl mt={4}>
-              <FormLabel>Phone number</FormLabel>
-              <Input placeholder="Phone number" />
-            </FormControl>
-          </ModalBody>
+              <FormControl mt={4}>
+                <FormLabel>Phone number</FormLabel>
 
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3}>
-              Save
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
-          </ModalFooter>
+                <Input type="tel" name="number" placeholder="phone" />
+              </FormControl>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button type="submit" colorScheme="blue" mr={3}>
+                Save
+              </Button>
+              <Button onClick={onClose}>Cancel</Button>
+            </ModalFooter>
+          </form>
         </ModalContent>
       </Modal>
     </>
   );
-}
+};

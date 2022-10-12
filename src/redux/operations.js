@@ -49,11 +49,11 @@ export const removeContact = createAsyncThunk(
 );
 
 export const patchContact = createAsyncThunk(
-  'contacts/removeContact',
-  async (id, thunkAPI) => {
+  'contacts/patchContact',
+  async ({ id, name, number }, thunkAPI) => {
     try {
-      const response = await axios.patch(`/contacts/${id}`);
-      return response.data;
+      await axios.patch(`/contacts/${id}`, { name, number });
+      return { id, name, number };
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
