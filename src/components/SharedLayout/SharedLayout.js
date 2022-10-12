@@ -19,7 +19,7 @@ export const SharedLayout = () => {
     <Container>
       <header style={{ width: '75%', margin: '50px auto' }}>
         <p style={{ textAlign: 'right', marginBottom: '32px' }}>
-          Welcome, {user.name ? user.name : ' anonymous'}
+          Welcome, {user.name ? user.name : ' anonymous!'}
         </p>
         <nav style={{ display: 'flex', justifyContent: 'space-between' }}>
           <NavLink to="/">Home</NavLink>

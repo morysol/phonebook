@@ -1,8 +1,14 @@
+import { useAuth } from '../hooks/useAuth';
 //
 export const Home = () => {
+  const { user } = useAuth();
   return (
     <div>
-      <p>You can register or login to save you phonebook here.</p>
+      {user.name ? (
+        <p>You can go to your contacts and add or edit what you whish. </p>
+      ) : (
+        <p>You can register or login to save you phonebook here.</p>
+      )}
     </div>
   );
 };
