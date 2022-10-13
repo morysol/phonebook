@@ -12,7 +12,6 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbSeparator,
   Button,
 } from '@chakra-ui/react';
 //
@@ -27,41 +26,6 @@ export const SharedLayout = () => {
   console.log(user.name);
 
   return (
-    //
-    // <Container>
-    //   <header style={{ width: '75%', margin: '50px auto' }}>
-    //     <Text mb={7} style={{ textAlign: 'right' }}>
-    //       Welcome, {user.name ? user.name : ' anonymous!'}
-    //     </Text>
-    //     <Divider orientation="horizontal" />
-    //     <nav style={{ display: 'flex', justifyContent: 'space-between' }}>
-    //       <Link to="/">Home</Link>
-
-    //       {isLoggedIn ? (
-    //         <>
-    //           <Link to="/contacts">Contacts</Link>
-
-    //           <button
-    //             type="button"
-    //             onClick={() => {
-    //               dispatch(userLogout());
-    //             }}
-    //           >
-    //             logout
-    //           </button>
-    //         </>
-    //       ) : (
-    //         <>
-    //           <Link to="/login">login</Link>
-    //           <Link to="/registration">registration</Link>
-    //         </>
-    //       )}
-    //     </nav>
-    //   </header>
-    //   <Outlet />
-    // </Container>
-
-    //
     <>
       <Container>
         <header style={{ width: '75%', margin: '50px auto' }}>
