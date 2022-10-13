@@ -16,7 +16,10 @@ import {
   // VStack,
 } from '@chakra-ui/react';
 
+import { useAuth } from 'hooks/useAuth';
+
 export const Login = () => {
+  const { error } = useAuth();
   const dispatch = useDispatch();
 
   return (
@@ -71,6 +74,12 @@ export const Login = () => {
           </form>
         )}
       </Formik>
+      {error && (
+        <>
+          <p>Can't login this user ...</p>
+          <p>Ckeck your email/pass carefuly or try to register. </p>
+        </>
+      )}
     </>
   );
 };

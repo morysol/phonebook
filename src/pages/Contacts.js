@@ -4,7 +4,7 @@ import { fetchContacts } from 'redux/operations';
 import { selectContactsError, selectContactsisLoading } from 'redux/selectors';
 import { ContactsList } from '../components/ContactsList/ContactsList';
 import { ContactsFormik } from 'components/ContactsFormik/ContactsFormik';
-import { SearchFilter } from '../components/SearchFilter/SearchFilter';
+import { SearchFilterStyled } from '../components/SearchFilter/SearchFilterStyled';
 export const Contacts = () => {
   const dispatch = useDispatch();
 
@@ -20,7 +20,7 @@ export const Contacts = () => {
       <ContactsFormik />
       <h2>Contacts</h2>
 
-      <SearchFilter />
+      <SearchFilterStyled />
       <ContactsList />
       {isLoading && <p>Loading contacts...</p>}
       {error && <p>Fetching error, server says: {error}</p>}
