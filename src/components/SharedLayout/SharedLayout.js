@@ -1,10 +1,20 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 //
 import { useDispatch } from 'react-redux';
 import { userLogout } from 'redux/operations';
 //
-import { Divider, Text } from '@chakra-ui/react';
+import { Divider, Text, Flex } from '@chakra-ui/react';
+
+import { ArrowRightIcon } from '@chakra-ui/icons';
+
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  Button,
+} from '@chakra-ui/react';
 //
 import { Container } from '../App.styled';
 import { useAuth } from 'hooks/useAuth';
@@ -18,37 +28,98 @@ export const SharedLayout = () => {
 
   return (
     //
-    <Container>
-      <header style={{ width: '75%', margin: '50px auto' }}>
-        <Text mb={7} style={{ textAlign: 'right' }}>
-          Welcome, {user.name ? user.name : ' anonymous!'}
-        </Text>
-        <Divider orientation="horizontal" />
-        <nav style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <NavLink to="/">Home</NavLink>
+    // <Container>
+    //   <header style={{ width: '75%', margin: '50px auto' }}>
+    //     <Text mb={7} style={{ textAlign: 'right' }}>
+    //       Welcome, {user.name ? user.name : ' anonymous!'}
+    //     </Text>
+    //     <Divider orientation="horizontal" />
+    //     <nav style={{ display: 'flex', justifyContent: 'space-between' }}>
+    //       <Link to="/">Home</Link>
 
-          {isLoggedIn ? (
-            <>
-              <NavLink to="/contacts">Contacts</NavLink>
+    //       {isLoggedIn ? (
+    //         <>
+    //           <Link to="/contacts">Contacts</Link>
 
-              <button
-                type="button"
+    //           <button
+    //             type="button"
+    //             onClick={() => {
+    //               dispatch(userLogout());
+    //             }}
+    //           >
+    //             logout
+    //           </button>
+    //         </>
+    //       ) : (
+    //         <>
+    //           <Link to="/login">login</Link>
+    //           <Link to="/registration">registration</Link>
+    //         </>
+    //       )}
+    //     </nav>
+    //   </header>
+    //   <Outlet />
+    // </Container>
+
+    //
+    <>
+      <Container>
+        <header style={{ width: '75%', margin: '50px auto' }}>
+          <Flex justifyContent="space-between">
+            <Text mb={7}>Welcome, {user.name ? user.name : ' anonymous!'}</Text>
+            {user.name && (
+              <Button
+                colorScheme="teal"
+                size="md"
                 onClick={() => {
                   dispatch(userLogout());
                 }}
               >
                 logout
-              </button>
-            </>
-          ) : (
-            <>
-              <NavLink to="/login">login</NavLink>
-              <NavLink to="/registration">registration</NavLink>
-            </>
-          )}
-        </nav>
-      </header>
-      <Outlet />
-    </Container>
+              </Button>
+            )}
+          </Flex>
+          <Divider orientation="horizontal" />
+
+          <Breadcrumb
+            color="blue.600"
+            spacing={8}
+            separator={<ArrowRightIcon color="gray.500" />}
+            style={{ display: 'flex', justifyContent: 'space-between' }}
+          >
+            <BreadcrumbItem>
+              <BreadcrumbLink as={Link} to="/">
+                Home
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            {isLoggedIn && (
+              <BreadcrumbItem>
+                <BreadcrumbLink as={Link} to="/contacts">
+                  Contacts
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            )}
+
+            {!isLoggedIn && (
+              <BreadcrumbItem>
+                <BreadcrumbLink as={Link} to="/login">
+                  login
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            )}
+            {!isLoggedIn && (
+              <BreadcrumbItem>
+                <BreadcrumbLink as={Link} to="/registration">
+                  registration
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+            )}
+          </Breadcrumb>
+        </header>
+        <Outlet />
+      </Container>
+    </>
+
+    //
   );
 };
