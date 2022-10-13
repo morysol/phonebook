@@ -3,7 +3,6 @@ import { setFilter } from '../../redux/filterSlice';
 
 import { nanoid } from 'nanoid';
 
-import { SearchBox, Filter } from './SearchFilter.styled';
 import { Box, Input } from '@chakra-ui/react';
 
 export const SearchFilterStyled = () => {
