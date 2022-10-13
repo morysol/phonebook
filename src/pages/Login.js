@@ -31,7 +31,7 @@ export const Login = () => {
         }}
         onSubmit={values => {
           const { email, password } = values;
-          console.log(email, password);
+          // console.log(email, password);
           dispatch(userLogin({ email, password }));
         }}
       >

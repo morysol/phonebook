@@ -23,7 +23,6 @@ export const SharedLayout = () => {
   const dispatch = useDispatch();
 
   const { user } = useAuth();
-  console.log(user.name);
 
   return (
     <>

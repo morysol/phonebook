@@ -31,7 +31,7 @@ export const Registration = () => {
         }}
         onSubmit={values => {
           const { name, email, password } = values;
-          console.log(name, email, password);
+          // console.log(name, email, password);
           // dispatch(userLogin({ email, password }));
           dispatch(userSignup({ name, email, password }));
         }}
