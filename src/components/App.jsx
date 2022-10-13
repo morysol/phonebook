@@ -62,5 +62,3 @@ export const App = () => {
 };
 
 export default App;
-
-//  <p>{items.length > 0 && JSON.stringify(items, null, 2)}</p>
